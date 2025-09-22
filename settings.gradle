@@ -1,1 +1,5 @@
 rootProject.name = 'msa-ecommerce'
+
+include 'service-discovery'
+include 'first-service'
+include 'second-service'
