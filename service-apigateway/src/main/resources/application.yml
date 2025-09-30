@@ -1,4 +1,32 @@
+server:
+  port: 8000 # API Gateway? 8000? ???? ??
+
 spring:
   application:
     name: service-apigateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            # User Service ??? ??
+                    - id: user-service-route
+                      # uri? k8s? Service ??? ??? ????. 'lb'? ?? ???? ????.
+                      uri: lb://service-user
+                      predicates:
+                        # '/user-service/**' ??? ??? ??? ?? ? ??? ????.
+                        - Path=/user-service/**
+                      filters:
+                        # ?? ???? '/user-service' ??? ???? ?? ???? ????.
+                        # ?: /user-service/users/1 -> /users/1
+                        - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
+# k8s liveness/readiness probe? ?? actuator ??
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
