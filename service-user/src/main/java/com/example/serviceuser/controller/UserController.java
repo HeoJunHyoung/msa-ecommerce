@@ -28,4 +28,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userDto);
     }
 
+    @GetMapping("/health-check")
+    public String healthCheckApi() {
+        return "Application is Running";
+    }
+
 }
