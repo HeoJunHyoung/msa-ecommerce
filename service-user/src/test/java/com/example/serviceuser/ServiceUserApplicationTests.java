@@ -1,13 +1,13 @@
-package com.example.msaecommerce;
+package com.example.serviceuser;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsaEcommerceApplicationTests {
+class ServiceUserApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
